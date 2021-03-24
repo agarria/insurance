@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="robots" content="index, follow">
+    <meta name="autor" content="Alex García">
+    <meta name="keywords" content="compare, insurance, cash, house, car, program, life, fast, access, now insurance, get insurance, free">
+    <meta name="description" content="Receive a quote from top auto insurance brands and get a policy customized to your needs.">
+    <link rel="canonical" href="http://ins-compare.com.com">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Ins-Compare.com</title>
+    <meta property="og:url" content="http://ins-compare.com.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ins-Compare.com">
+    <meta property="og:title" content="Ins-Compare.com">
+    <meta property="og:description" content="Receive a quote from top auto insurance brands and get a policy customized to your needs.">
+    <meta property="og:image" content="thumbnail.png">
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="ins-compare.css">
+</head>
+<body>
+    <nav>
+        <span class="logo">
+            <img src="img/logo.svg">
+            Ins<br>Compare.com
+        </span>
+        <div class="links">
+            <a>Top Companies</a>
+        </div>
+    </nav>
+    <main>
+        <header>
+            <div class="info">
+                <span class="head">Find trusted insurance companies and compare rates in minutes.</span>
+                <span class="head-sub">We provide fast, easy access to the nation’s top insurance brands so you can get the quote you need and get back to life!</span>
+                <div class="drop">
+                    <div class="select">
+                        <select>
+                            <option value="" disabled selected>Select a Category</option>
+                            <option value="auto">Auto.ins-compare.com</option>
+                            <option value="home">Home.ins-compare.com</option>
+                            <option value="medicare">Medicare.ins-compare.com</option>
+                            <option value="life">Life.ins-compare.com</option>
+                            <option value="health">Health.ins-compare.com</option>
+                        </select>
+                    </div>
+                    <a class="button">Discover</a>
+                </div>
+            </div>
+            <img class="insurance" src="img/family.svg">
+        </header>
+        <section>
+            <div class="category">
+                <span class="title">2021's Top Ranked Insurance Companies</span>
+                <span class="option">
+                    <img src="img/icon-1.svg">
+                    <span class="name">Auto<span class="url">Auto.ins-compare.com</span></span>
+                </span>
+                <span class="option">
+                    <img src="img/icon-2.svg">
+                    <span class="name">Home<span class="url">Home.ins-compare.com</span></span>
+                </span>
+                <span class="option">
+                    <img src="img/icon-3.svg">
+                    <span class="name">Medicare<span class="url">Medicare.ins-compare.com</span></span>
+                </span>
+                <span class="option">
+                    <img src="img/icon-4.svg">
+                    <span class="name">Life<span class="url">Life.ins-compare.com</span></span>
+                </span>
+                <span class="option">
+                    <img src="img/icon-5.svg">
+                    <span class="name">Health<span class="url">Health.ins-compare.com</span></span>
+                </span>
+            </div>
+        </section>
+        <footer>
+            
+        </footer>
+    </main>
+</body>
+<script type="text/javascript">
+    var x, i, j, l, ll, selElmnt, a, b, c;
+
+    x = document.getElementsByClassName("select");
+    l = x.length;
+
+    for (i = 0; i < l; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        ll = selElmnt.length;
+
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 1; j < ll; j++) {
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function(e) {
+                var y, i, k, s, h, sl, yl;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                sl = s.length;
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < sl; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        yl = y.length;
+                        for (k = 0; k < yl; k++) {
+                            y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                    }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function(e) {
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+
+    function closeAllSelect(elmnt) {
+        var x, y, i, xl, yl, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        xl = x.length;
+        yl = y.length;
+        for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i)
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+
+    document.addEventListener("click", closeAllSelect);
+</script>
+</html>
