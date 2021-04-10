@@ -91,6 +91,56 @@ nav {
     text-decoration: none;
 }
 
+footer {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 4% 14%;
+    margin: 0;
+    background: #e7ecfb;
+}
+
+footer .logo {
+    font-size: 18px;
+}
+
+footer .logo img {
+    height: 58px;
+    filter: grayscale(100%);
+}
+
+footer .links {
+    height: 58px;
+}
+
+footer .links a {
+    padding: 0;
+    margin: 0 20px 0 0;
+    color: #000a25;
+    font-size: 16px;
+    font-weight: 400;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+footer .links a:last-child {
+    margin: 0;
+}
+
+.copy {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 4% 0 0 0;
+}
+
 main {
     position: relative;
     display: block;
@@ -145,6 +195,8 @@ section {
     cursor: pointer;
     background: #e7ecfb;
     border-radius: 10px;
+    text-decoration: none;
+    overflow: 0;
 }
 
 .option img {
@@ -233,17 +285,6 @@ header {
     margin: 0;
 }
 
-footer {
-    position: relative;
-    display: block;
-    float: left;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    background: #e7ecfb;
-}
-
 .drop {
     position: relative;
     display: block;
@@ -272,6 +313,7 @@ footer {
     border: 0;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .select {

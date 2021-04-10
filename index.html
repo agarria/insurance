@@ -8,7 +8,7 @@
     <meta name="robots" content="index, follow">
     <meta name="autor" content="Alex García">
     <meta name="keywords" content="compare, insurance, cash, house, car, program, life, fast, access, now insurance, get insurance, free">
-    <meta name="description" content="Receive a quote from top auto insurance brands and get a policy customized to your needs.">
+    <meta name="description" content="Top auto insurance brands.">
     <link rel="canonical" href="http://ins-compare.com.com">
     <link rel="icon" type="image/png" href="favicon.png">
     <title>Ins-Compare.com</title>
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Ins-Compare.com">
     <meta property="og:title" content="Ins-Compare.com">
-    <meta property="og:description" content="Receive a quote from top auto insurance brands and get a policy customized to your needs.">
+    <meta property="og:description" content="Top auto insurance brands.">
     <meta property="og:image" content="thumbnail.png">
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" type="text/css" href="ins-compare.css">
@@ -32,22 +32,22 @@
         </div>
     </nav>
     <main>
-        <header>
+        <header id="header">
             <div class="info">
                 <span class="head">Find trusted insurance companies and compare rates in minutes.</span>
                 <span class="head-sub">We provide fast, easy access to the nation’s top insurance brands so you can get the quote you need and get back to life!</span>
                 <div class="drop">
                     <div class="select">
                         <select>
-                            <option value="" disabled selected>Select a Category</option>
-                            <option value="auto">Auto.ins-compare.com</option>
-                            <option value="home">Home.ins-compare.com</option>
-                            <option value="medicare">Medicare.ins-compare.com</option>
-                            <option value="life">Life.ins-compare.com</option>
-                            <option value="health">Health.ins-compare.com</option>
+                            <option value="none" disabled selected>Select a Category</option>
+                            <option value="https://www.auto.ins-compare.com">Auto.ins-compare.com</option>
+                            <option value="https://www.home.ins-compare.com">Home.ins-compare.com</option>
+                            <option value="https://www.medicare.ins-compare.com">Medicare.ins-compare.com</option>
+                            <option value="https://www.life.ins-compare.com">Life.ins-compare.com</option>
+                            <option value="https://www.health.ins-compare.com">Health.ins-compare.com</option>
                         </select>
                     </div>
-                    <a class="button">Discover</a>
+                    <a id="go" href="" target="_blank" class="button">Discover</a>
                 </div>
             </div>
             <img class="insurance" src="img/family.svg">
@@ -55,34 +55,45 @@
         <section>
             <div class="category">
                 <span class="title">2021's Top Ranked Insurance Companies</span>
-                <span class="option">
+                <a href="https://www.auto.ins-compare.com" target="_blank" class="option">
                     <img src="img/icon-1.svg">
-                    <span class="name">Auto<span class="url">Auto.ins-compare.com</span></span>
-                </span>
-                <span class="option">
+                    <span class="name">Auto<span class="url">ins-compare.com</span></span>
+                </a>
+                <a href="https://www.home.ins-compare.com" target="_blank" class="option">
                     <img src="img/icon-2.svg">
-                    <span class="name">Home<span class="url">Home.ins-compare.com</span></span>
-                </span>
-                <span class="option">
+                    <span class="name">Home<span class="url">ins-compare.com</span></span>
+                </a>
+                <a href="https://www.medicare.ins-compare.com" target="_blank" class="option">
                     <img src="img/icon-3.svg">
-                    <span class="name">Medicare<span class="url">Medicare.ins-compare.com</span></span>
-                </span>
-                <span class="option">
+                    <span class="name">Medicare<span class="url">ins-compare.com</span></span>
+                </a>
+                <a href="https://www.life.ins-compare.com" target="_blank" class="option">
                     <img src="img/icon-4.svg">
-                    <span class="name">Life<span class="url">Life.ins-compare.com</span></span>
-                </span>
-                <span class="option">
+                    <span class="name">Life<span class="url">ins-compare.com</span></span>
+                </a>
+                <a href="https://www.health.ins-compare.com" target="_blank" class="option">
                     <img src="img/icon-5.svg">
-                    <span class="name">Health<span class="url">Health.ins-compare.com</span></span>
-                </span>
+                    <span class="name">Health<span class="url">ins-compare.com</span></span>
+                </a>
             </div>
         </section>
         <footer>
-            
+            <span class="logo">
+                <img src="img/logo.svg">
+                Ins<br>Compare.com
+            </span>
+            <div class="links">
+                <a href="#header">get started</a>
+                <a>privacy policy</a>
+                <a>terms & conditions</a>
+            </div>
+            <span class="copy">2021 © Ins-Compare.com All Rights Reserved</span>
         </footer>
     </main>
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script type="text/javascript">
+
     var x, i, j, l, ll, selElmnt, a, b, c;
 
     x = document.getElementsByClassName("select");
@@ -93,6 +104,7 @@
         ll = selElmnt.length;
 
         a = document.createElement("DIV");
+        a.setAttribute("id", "website");
         a.setAttribute("class", "select-selected");
         a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
         x[i].appendChild(a);
@@ -154,5 +166,11 @@
     }
 
     document.addEventListener("click", closeAllSelect);
+
+    document.getElementById('website').addEventListener('click', function() {
+        url = document.getElementById('go');
+        url.setAttribute('href', 'https://www.'+this.innerHTML);
+    });
+
 </script>
 </html>
