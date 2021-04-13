@@ -196,7 +196,7 @@ section {
     background: #e7ecfb;
     border-radius: 10px;
     text-decoration: none;
-    overflow: 0;
+    outline: 0;
 }
 
 .option img {
@@ -266,11 +266,6 @@ header {
     margin: 0 0 20px 0;
 }
 
-.head i {
-    font-style: normal;
-    color: #FF9E1F;
-}
-
 .head-sub {
     display: block;
     float: left;
@@ -278,6 +273,12 @@ header {
     font-weight: 300;
     line-height: 1;
     color: #535b62;
+}
+
+.head i,
+.head-sub i {
+    font-style: normal;
+    color: #FF9E1F;
 }
 
 .update {
@@ -622,4 +623,152 @@ form button {
     font-weight: 700;
     color: #ccc;
     text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    nav {
+        padding: 0 10%;
+        height: 50px;
+    }
+
+    .logo {
+        font-size: 12px;
+    }
+
+    .logo img {
+        height: 40px;
+        margin: 0 5px 0 0;
+    }
+
+    .links a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .insurance {
+        display: none;
+    }
+
+    header {
+        padding: 15% 10%;
+    }
+
+    .info {
+        width: 100%;
+        margin: 0;
+    }
+
+    .head {
+        font-size: 30px;
+        margin: 0 0 10% 0;
+    }
+
+    .head-sub {
+        font-size: 16px;
+    }
+
+    .drop {
+        margin: 10% 0 0 0;
+    }
+
+    .select {
+        width: 65%;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 5% 0 0;
+    }
+
+    .button {
+        width: 30%;
+        height: 40px;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .select-items div,
+    .select-selected {
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+
+    .select-items {
+        top: 43px;
+    }
+
+    .category {
+        padding: 15% 6%;
+    }
+
+    .title {
+        font-size: 22px;
+        margin: 0 0 15% 0;
+    }
+
+    .option {
+        width: 46%;
+        margin: 0 2% 4%;
+    }
+
+    .option:last-child {
+        margin: 0 2% 0;
+    }
+
+    .option img {
+        height: 110px;
+    }
+
+    .name {
+        font-size: 22px;
+        margin: 5% 0 0 0;
+    }
+
+    .name .url {
+        margin: 5% 0 0 0;
+    }
+
+    footer {
+        padding: 10%;
+    }
+
+    footer .logo {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer .logo img {
+        height: 50px;
+    }
+
+    footer .logo {
+        font-size: 14px;
+        margin: 0 0 5% 0;
+    }
+
+    footer .links a {
+        font-size: 12px;
+        margin: 0 10px;
+        text-align: center;
+    }
+
+    footer .links a:last-child {
+        margin: 0 10px;
+    }
+
+    footer .links {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .copy {
+        font-size: 12px;
+        text-align: center;
+        margin: 5% 0 0 0;
+    }
 }
