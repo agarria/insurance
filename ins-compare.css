@@ -165,8 +165,9 @@ section {
     margin: 0;
 }
 
-.bg {
+.list {
     background: #e7ecfb;
+    transition: all .3s ease;
 }
 
 section iframe {
