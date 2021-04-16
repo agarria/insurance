@@ -254,6 +254,10 @@
     var frame = document.getElementById("results");
     //console.log(frame);
     frame.onload = function(){
+
+    }
+
+    function reSizeIframe(){
         frame.style.height = frame.contentWindow.document.getElementById("target").offsetHeight + "px";
     }
 
