@@ -30,6 +30,10 @@ body {
     -webkit-box-sizing: border-box;
 }
 
+.container {
+    background: #e7ecfb !important;
+}
+
 nav {
     position: relative;
     display: block;
@@ -158,6 +162,10 @@ section {
     height: auto;
     padding: 0;
     margin: 0;
+}
+
+.bg {
+    background: #e7ecfb;
 }
 
 section iframe {
