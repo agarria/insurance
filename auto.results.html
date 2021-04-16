@@ -28,9 +28,19 @@
     </div>
 </body>
 <script>
+    var contHeight = 0;
     window.onload = function(){
-        parent.reSizeIframe()
+        reloadParentSize();
     }
+
+    function reloadParentSize(){
+        if(contHeight < document.getElementById("target").offsetHeight){
+           parent.reSizeIframe(); 
+           contHeight = document.getElementById("target").offsetHeight;
+        }
+        setTimeout(function(){reloadParentSize();},500);
+    }
+
 </script>
 <script type="text/javascript" src="https://cdn.myadoptimizer.com/maojsfiles/landingpagesjs/09070b21-dbb5-4a9f-823b-9eba588a2c91.js"></script>
 </html>
