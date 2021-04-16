@@ -32,8 +32,8 @@
         </div>
     </nav>
     <div class="overlay">
-        <div class="modal">
-            <div class="progress">
+        <div class="form">
+            <div class="pending">
                 <span class="dot active">1</span>
                 <span class="dot">2</span>
                 <span class="dot">3</span>
@@ -44,6 +44,10 @@
                 <div class="question">
                     <span class="question-name">Zip code</span>
                     <input id="zip" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Enter your zip code">
+                    <input id="city" style="display: none;" type="text">
+                    <input id="state" style="display: none;" type="text">
+                    <input id="short" style="display: none;" type="text">
+                    <span class="error">Wrong zip code, put it again</span>
                     <button id="continue">Continue</button>
                 </div>
                 <div class="question">
@@ -96,7 +100,7 @@
             </div>
         </header>
         <section>
-
+            <iframe src="www.google.com"></iframe>
         </section>
         <footer>
             <span class="logo">
@@ -114,10 +118,63 @@
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script type="text/javascript" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script type="text/javascript" src="https://cdn.myadoptimizer.com/maojsfiles/landingpagesjs/09070b21-dbb5-4a9f-823b-9eba588a2c91.js"></script>
 <script type="text/javascript">
+    function is_int(value) {
+        if ((parseFloat(value) == parseInt(value)) && !isNaN(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var properties = {
+        zipcode: "",
+        state: "",
+        insured: "",
+        accidents: "",
+        convictions: "",
+        homeowner: ""
+    }
+
     $( document ).ready(function() {
         $(".open").click(function(){
             $(".text").toggleClass("show");
+        });
+
+        $("#zip").keyup(function() {
+
+            var el = $(this);
+
+            if ((el.val().length == 5) && (is_int(el.val()))) {
+
+                $.ajax({
+                    url: "https://zip.getziptastic.com/v2/US/" + el.val(),
+                    cache: false,
+                    dataType: "json",
+                    type: "GET",
+                    success: function(result, success) {
+                        $(".error").css('display','none');
+                        $("#city").val(result.city);
+                        $("#state").val(result.state);
+                        $("#short").val(result.state_short);
+                        $("#continue").css('display','block');
+                    },
+                    error: function(result, success) {
+                        $(".error").css('display','block');
+                        $("#continue").css('display','none');
+
+                    }
+                });
+
+            } else if (el.val().length < 5) {
+
+                $(".error").css('display','block');
+                $("#continue").css('display','none');
+
+                return false;
+
+            };
         });
 
         $("#continue").click(function(){
@@ -132,6 +189,7 @@
 
                 return false;
             }
+
         });
 
         $('#insured').change(function(){
@@ -172,7 +230,17 @@
 
         $('#homeowner').change(function(){
             if($(this).val() == 'yes'){
+
                 $(".overlay").css('display','none');
+
+                properties.zipcode = $("#zip").val();
+                properties.state = $("#short").val();
+                properties.insured = $("#insured").val();
+                properties.accidents = $("#accidents").val();
+                properties.convictions = $("#convictions").val();
+                properties.homeowner = $("#homeowner").val();
+
+                console.log("properties: " + JSON.stringify(properties));
             } else {
 
                 return false;
