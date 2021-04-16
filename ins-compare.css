@@ -501,6 +501,16 @@ header {
     transition: all .3s ease;
 }
 
+.content {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
 .pending {
     position: relative;
     display: flex;
@@ -616,7 +626,7 @@ form input {
     margin: 5% 0 0 0;
     font-size: 12px;
     font-weight: 700;
-    color: red;
+    color: #FF9E1F;
     text-align: center;
 }
 
