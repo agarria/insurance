@@ -63,7 +63,7 @@
                     <select id="accidents">
                         <option value="" disabled selected>Choose</option>
                         <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="None">No</option>
                     </select>
                 </div>
                 <div class="question">
@@ -241,12 +241,18 @@
                 properties.homeowner = $("#homeowner").val();
 
                 console.log("properties: " + JSON.stringify(properties));
+
+                frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&InsuredStatus="+properties.insured+"&Accidents="+properties.accidents+"&DUI="+properties.convictions+"&HomeOwner="+properties.homeowner;            
+
             } else {
 
                 return false;
             }
         });
     });
+
+    var frame = document.getElementById("results");
+    frame.style.height = frame.contentWindow.document.getElementById("target").offsetHeight + "px";
 
     var date = new Date();
     date.setDate(date.getDate()-13);
