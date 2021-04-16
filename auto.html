@@ -252,8 +252,10 @@
     });
 
     var frame = document.getElementById("results");
-    console.log(frame);
-    frame.style.height = frame.contentWindow.document.getElementById("target").offsetHeight + "px";
+    //console.log(frame);
+    frame.onload = function(){
+        frame.style.height = frame.contentWindow.document.getElementById("target").offsetHeight + "px";
+    }
 
     var date = new Date();
     date.setDate(date.getDate()-13);
