@@ -601,6 +601,9 @@ form input {
     border-radius: 5px;
     outline: 0;
     text-align: center;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .error {
