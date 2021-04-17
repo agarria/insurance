@@ -34,11 +34,7 @@
     <div class="overlay">
         <div class="form">
             <div class="pending">
-                <span class="dot active">1</span>
-                <span class="dot">2</span>
-                <span class="dot">3</span>
-                <span class="dot">4</span>
-                <span class="dot">5</span>
+                <span class="bar"></span>
             </div>
             <form>
                 <div class="question">
@@ -54,15 +50,15 @@
                     <span class="question-name">Are you currently insured?</span>
                     <select id="insured">
                         <option value="" disabled selected>Choose</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <div class="question">
                     <span class="question-name">Any accidents in the last 3 years?</span>
                     <select id="accidents">
                         <option value="" disabled selected>Choose</option>
-                        <option value="yes">Yes</option>
+                        <option value="Yes">Yes</option>
                         <option value="None">No</option>
                     </select>
                 </div>
@@ -70,16 +66,16 @@
                     <span class="question-name">DUI convictions in the last 3 years?</span>
                     <select id="convictions">
                         <option value="" disabled selected>Choose</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <div class="question">
                     <span class="question-name">Do you own your home?</span>
                     <select id="homeowner">
                         <option value="" disabled selected>Choose</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
             </form>
@@ -184,8 +180,6 @@
             } else {
                 $(".question:nth-child(1)").css('display','none');
                 $(".question:nth-child(2)").css('display','block');
-                $(".dot:nth-child(1)").removeClass("active");
-                $(".dot:nth-child(2)").addClass("active");
 
                 return false;
             }
@@ -196,9 +190,10 @@
             if($(this).val() == 'yes'){
                 $(".question:nth-child(2)").css('display','none');
                 $(".question:nth-child(3)").css('display','block');
-                $(".dot:nth-child(2)").removeClass("active");
-                $(".dot:nth-child(3)").addClass("active");
             } else {
+
+                $(".question:nth-child(2)").css('display','none');
+                $(".question:nth-child(3)").css('display','block');
 
                 return false;
             }
@@ -208,8 +203,7 @@
             if($(this).val() == 'None'){
                 $(".question:nth-child(3)").css('display','none');
                 $(".question:nth-child(4)").css('display','block');
-                $(".dot:nth-child(3)").removeClass("active");
-                $(".dot:nth-child(4)").addClass("active");
+
             } else {
 
                 return false;
@@ -220,8 +214,7 @@
             if($(this).val() == 'no'){
                 $(".question:nth-child(4)").css('display','none');
                 $(".question:nth-child(5)").css('display','block');
-                $(".dot:nth-child(4)").removeClass("active");
-                $(".dot:nth-child(5)").addClass("active");
+
             } else {
 
                 return false;
