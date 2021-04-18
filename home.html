@@ -98,7 +98,6 @@
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script type="text/javascript" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="https://cdn.myadoptimizer.com/maojsfiles/landingpagesjs/09070b21-dbb5-4a9f-823b-9eba588a2c91.js"></script>
 <script type="text/javascript">
     function is_int(value) {
@@ -111,17 +110,19 @@
 
     var properties = {
         zipcode: "",
+        state: "",
         homeowner: "",
         insured: ""
     }
 
     $( document ).ready(function() {
+        $("#bar").css('width','calc(100% / 3)');
 
         jQuery.get("http://ipinfo.io", function(response) {
             console.log("Zip code: "+response.postal);
             $("#zip").val(response.postal)
         }, "jsonp");
-    
+
         $(".open").click(function(){
             $(".text").toggleClass("show");
         });
@@ -166,44 +167,30 @@
             } else {
                 $(".question:nth-child(1)").css('display','none');
                 $(".question:nth-child(2)").css('display','block');
-                $("#bar").css('width','calc((100% / 5) * 2)');
+                $("#bar").css('width','calc((100% / 3) * 2)');
 
                 return false;
             }
 
         });
 
-        $('#insured').change(function(){
+        $('#homeowner').change(function(){
             $(".question:nth-child(2)").css('display','none');
             $(".question:nth-child(3)").css('display','block');
-            $("#bar").css('width','calc((100% / 5) * 3)');
+            $("#bar").css('width','calc((100% / 3) * 3)');
         });
 
-        $('#accidents').change(function(){
-            $(".question:nth-child(3)").css('display','none');
-            $(".question:nth-child(4)").css('display','block');
-            $("#bar").css('width','calc((100% / 5) * 4)');
-        });
-
-        $('#convictions').change(function(){
-            $(".question:nth-child(4)").css('display','none');
-            $(".question:nth-child(5)").css('display','block');
-            $("#bar").css('width','calc((100% / 5) * 5)');
-        });
-
-        $('#homeowner').change(function(){
+        $('#insured').change(function(){
                 $(".overlay").css('display','none');
 
                 properties.zipcode = $("#zip").val();
                 properties.state = $("#short").val();
-                properties.insured = $("#insured").val();
-                properties.accidents = $("#accidents").val();
-                properties.convictions = $("#convictions").val();
                 properties.homeowner = $("#homeowner").val();
+                properties.insured = $("#insured").val();
 
                 console.log("properties: " + JSON.stringify(properties));
 
-                frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&InsuredStatus="+properties.insured+"&Accidents="+properties.accidents+"&DUI="+properties.convictions+"&HomeOwner="+properties.homeowner;
+                frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&HomeOwner="+properties.homeowner+"&InsuredStatus="+properties.insured;
         });
     });
 

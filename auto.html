@@ -134,6 +134,11 @@
     }
 
     $( document ).ready(function() {
+        jQuery.get("http://ipinfo.io", function(response) {
+            console.log("Zip code: "+response.postal);
+            $("#zip").val(response.postal)
+        }, "jsonp");
+        
         $(".open").click(function(){
             $(".text").toggleClass("show");
         });
