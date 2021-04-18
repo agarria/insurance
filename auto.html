@@ -39,7 +39,7 @@
             <form>
                 <div class="question">
                     <span class="question-name">Zip code</span>
-                    <input id="zip" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Enter your zip code">
+                    <input id="zip" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Enter your zip code">
                     <input id="city" style="display: none;" type="text">
                     <input id="state" style="display: none;" type="text">
                     <input id="short" style="display: none;" type="text">
