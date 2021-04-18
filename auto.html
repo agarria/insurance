@@ -34,7 +34,7 @@
     <div class="overlay">
         <div class="form">
             <div class="pending">
-                <span class="bar"></span>
+                <span id="bar" class="bar"></span>
             </div>
             <form>
                 <div class="question">
@@ -43,7 +43,7 @@
                     <input id="city" style="display: none;" type="text">
                     <input id="state" style="display: none;" type="text">
                     <input id="short" style="display: none;" type="text">
-                    <span class="error">Wrong zip code, put it again</span>
+                    <span class="error">Invalid zip code. Please try again!</span>
                     <button id="continue">Continue</button>
                 </div>
                 <div class="question">
@@ -180,6 +180,7 @@
             } else {
                 $(".question:nth-child(1)").css('display','none');
                 $(".question:nth-child(2)").css('display','block');
+                $("#bar").css('width','calc((100% / 5) * 2)');
 
                 return false;
             }
@@ -187,43 +188,24 @@
         });
 
         $('#insured').change(function(){
-            if($(this).val() == 'yes'){
-                $(".question:nth-child(2)").css('display','none');
-                $(".question:nth-child(3)").css('display','block');
-            } else {
-
-                $(".question:nth-child(2)").css('display','none');
-                $(".question:nth-child(3)").css('display','block');
-
-                return false;
-            }
+            $(".question:nth-child(2)").css('display','none');
+            $(".question:nth-child(3)").css('display','block');
+            $("#bar").css('width','calc((100% / 5) * 3)');
         });
 
         $('#accidents').change(function(){
-            if($(this).val() == 'None'){
-                $(".question:nth-child(3)").css('display','none');
-                $(".question:nth-child(4)").css('display','block');
-
-            } else {
-
-                return false;
-            }
+            $(".question:nth-child(3)").css('display','none');
+            $(".question:nth-child(4)").css('display','block');
+            $("#bar").css('width','calc((100% / 5) * 4)');
         });
 
         $('#convictions').change(function(){
-            if($(this).val() == 'no'){
-                $(".question:nth-child(4)").css('display','none');
-                $(".question:nth-child(5)").css('display','block');
-
-            } else {
-
-                return false;
-            }
+            $(".question:nth-child(4)").css('display','none');
+            $(".question:nth-child(5)").css('display','block');
+            $("#bar").css('width','calc((100% / 5) * 5)');
         });
 
         $('#homeowner').change(function(){
-            if($(this).val() == 'yes'){
-
                 $(".overlay").css('display','none');
 
                 properties.zipcode = $("#zip").val();
@@ -235,12 +217,7 @@
 
                 console.log("properties: " + JSON.stringify(properties));
 
-                frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&InsuredStatus="+properties.insured+"&Accidents="+properties.accidents+"&DUI="+properties.convictions+"&HomeOwner="+properties.homeowner;            
-
-            } else {
-
-                return false;
-            }
+                frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&InsuredStatus="+properties.insured+"&Accidents="+properties.accidents+"&DUI="+properties.convictions+"&HomeOwner="+properties.homeowner;
         });
     });
 

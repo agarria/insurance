@@ -163,6 +163,7 @@ section {
     height: auto;
     padding: 0;
     margin: 0;
+    background: #fff;
 }
 
 .list {
@@ -533,6 +534,7 @@ header {
     width: calc(100% / 5);
     height: 100%;
     background: #FF9E1F;
+    transition: all .3s ease;
 }
 
 .dot {
