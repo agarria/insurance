@@ -93,6 +93,8 @@ nav {
     font-weight: 700;
     background: #FF9E1F;
     cursor: pointer;
+    box-shadow: none;
+    border: 0;
     text-decoration: none;
 }
 
@@ -123,7 +125,7 @@ footer .links {
 footer .links a {
     padding: 0;
     margin: 0 20px 0 0;
-    color: #000a25;
+    color: #000a25 !important;
     font-size: 16px;
     font-weight: 400;
     background: transparent;
