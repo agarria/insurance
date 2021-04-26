@@ -9,24 +9,24 @@
     <meta name="autor" content="Alex García">
     <meta name="keywords" content="compare, insurance, cash, house, car, program, life, fast, access, now insurance, get insurance, free">
     <meta name="description" content="Top auto insurance brands.">
-    <link rel="canonical" href="https://auto.ins-compare.com.com">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://auto.ins-compare.com">
+    <link rel="icon" type="image/png" href="https://ins-compare.com/favicon.png">
     <title>Auto.Ins-Compare.com</title>
-    <meta property="og:url" content="https://auto.ins-compare.com.com">
+    <meta property="og:url" content="https://auto.ins-compare.com">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Auto-Ins-Compare.com">
     <meta property="og:title" content="Auto-Ins-Compare.com">
     <meta property="og:description" content="Top auto insurance brands.">
-    <meta property="og:image" content="thumbnail.png">
+    <meta property="og:image" content="https://ins-compare.com/thumbnail.png">
     <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="ins-compare.css">
+    <link rel="stylesheet" type="text/css" href="https://ins-compare.com/ins-compare.css">
 </head>
 <body>
     <nav>
-        <span class="logo">
+        <a href="/index" class="logo">
             <img src="img/logo.svg">
             Ins<br>Compare.com
-        </span>
+        </a>
         <div class="links">
             <a>Top Companies</a>
         </div>
@@ -48,35 +48,31 @@
                 </div>
                 <div class="question">
                     <span class="question-name">Are you currently insured?</span>
-                    <select id="insured">
-                        <option value="" disabled selected>Choose</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
+                    <div class="buttons">
+                        <span id="insured_yes" class="response default">Yes</span>
+                        <span id="insured_no" class="response">No</span>
+                    </div>
                 </div>
                 <div class="question">
                     <span class="question-name">Any accidents in the last 3 years?</span>
-                    <select id="accidents">
-                        <option value="" disabled selected>Choose</option>
-                        <option value="Yes">Yes</option>
-                        <option value="None">No</option>
-                    </select>
+                    <div class="buttons">
+                        <span id="accidents_yes" class="response">Yes</span>
+                        <span id="accidents_no" class="response default">No</span>
+                    </div>
                 </div>
                 <div class="question">
                     <span class="question-name">DUI convictions in the last 3 years?</span>
-                    <select id="convictions">
-                        <option value="" disabled selected>Choose</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
+                    <div class="buttons">
+                        <span id="convictions_yes" class="response">Yes</span>
+                        <span id="convictions_no" class="response default">No</span>
+                    </div>
                 </div>
                 <div class="question">
                     <span class="question-name">Do you own your home?</span>
-                    <select id="homeowner">
-                        <option value="" disabled selected>Choose</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
+                    <div class="buttons">
+                        <span id="homeowner_yes" class="response default">Yes</span>
+                        <span id="homeowner_no" class="response">No</span>
+                    </div>
                 </div>
             </form>
             <span class="helper">No contact information or SSN needed</span>
@@ -96,7 +92,7 @@
             </div>
         </header>
         <section class="list">
-            <iframe id="results" src="https://agarria.github.io/insurance/auto.results"></iframe>
+            <iframe id="results" scrolling="no" src="https://www.auto.ins-compare.com/auto.results.html"></iframe>
         </section>
         <footer>
             <span class="logo">
@@ -105,15 +101,16 @@
             </span>
             <div class="links">
                 <a href="#header">get started</a>
-                <a>privacy policy</a>
-                <a>terms & conditions</a>
+                <a href="https://ins-compare.com/privacy.html">privacy policy</a>
+                <a href="https://ins-compare.com/terms.html">terms & conditions</a>
             </div>
             <span class="copy">2021 © Ins-Compare.com All Rights Reserved</span>
         </footer>
     </main>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-<script type="text/javascript" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 <script type="text/javascript" src="https://cdn.myadoptimizer.com/maojsfiles/landingpagesjs/09070b21-dbb5-4a9f-823b-9eba588a2c91.js"></script>
 <script type="text/javascript">
     function is_int(value) {
@@ -192,35 +189,59 @@
 
         });
 
-        $('#insured').change(function(){
+        $('#insured_yes,#insured_no').click(function($event){
             $(".question:nth-child(2)").css('display','none');
             $(".question:nth-child(3)").css('display','block');
             $("#bar").css('width','calc((100% / 5) * 3)');
+
+            if ($event.currentTarget.id == 'insured_yes'){
+                properties.insured = "Yes";
+            }
+            if ($event.currentTarget.id == 'insured_no'){
+                properties.insured = "No";
+            }
         });
 
-        $('#accidents').change(function(){
+        $('#accidents_yes,#accidents_no').click(function($event){
             $(".question:nth-child(3)").css('display','none');
             $(".question:nth-child(4)").css('display','block');
             $("#bar").css('width','calc((100% / 5) * 4)');
+
+            if ($event.currentTarget.id == 'accidents_yes'){
+                properties.accidents = "Yes";
+            }
+            if ($event.currentTarget.id == 'accidents_no'){
+                properties.accidents = "None";
+            }
         });
 
-        $('#convictions').change(function(){
+        $('#convictions_yes,#convictions_no').click(function($event){
             $(".question:nth-child(4)").css('display','none');
             $(".question:nth-child(5)").css('display','block');
             $("#bar").css('width','calc((100% / 5) * 5)');
+
+            if ($event.currentTarget.id == 'convictions_yes'){
+                properties.convictions = "Yes";
+            }
+            if ($event.currentTarget.id == 'convictions_no'){
+                properties.convictions = "No";
+            }
         });
 
-        $('#homeowner').change(function(){
+        $('#homeowner_yes,#homeowner_no').click(function($event){
                 $(".overlay").css('display','none');
+                $("html").css('overflow-y','auto');
 
                 properties.zipcode = $("#zip").val();
                 properties.state = $("#short").val();
-                properties.insured = $("#insured").val();
-                properties.accidents = $("#accidents").val();
-                properties.convictions = $("#convictions").val();
-                properties.homeowner = $("#homeowner").val();
 
-                console.log("properties: " + JSON.stringify(properties));
+                if ($event.currentTarget.id == 'homeowner_yes'){
+                    properties.homeowner = "Yes";
+                }
+                if ($event.currentTarget.id == 'homeowner_no'){
+                    properties.homeowner = "No";
+                }
+
 
                 frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&InsuredStatus="+properties.insured+"&Accidents="+properties.accidents+"&DUI="+properties.convictions+"&HomeOwner="+properties.homeowner;
         });

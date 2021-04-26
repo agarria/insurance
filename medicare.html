@@ -9,24 +9,24 @@
     <meta name="autor" content="Alex García">
     <meta name="keywords" content="compare, insurance, cash, house, car, program, life, fast, access, now insurance, get insurance, free">
     <meta name="description" content="Top medicare insurance brands.">
-    <link rel="canonical" href="https://medicare.ins-compare.com.com">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://medicare.ins-compare.com">
+    <link rel="icon" type="image/png" href="https://ins-compare.com/favicon.png">
     <title>Medicare.Ins-Compare.com</title>
-    <meta property="og:url" content="https://medicare.ins-compare.com.com">
+    <meta property="og:url" content="https://medicare.ins-compare.com">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Medicare-Ins-Compare.com">
     <meta property="og:title" content="Medicare-Ins-Compare.com">
     <meta property="og:description" content="Top medicare insurance brands.">
-    <meta property="og:image" content="thumbnail.png">
+    <meta property="og:image" content="https://ins-compare.com/thumbnail.png">
     <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="ins-compare.css">
+    <link rel="stylesheet" type="text/css" href="https://ins-compare.com/ins-compare.css">
 </head>
 <body>
     <nav>
-        <span class="logo">
+        <a href="https://ins-compare.com/" class="logo">
             <img src="img/logo.svg">
             Ins<br>Compare.com
-        </span>
+        </a>
         <div class="links">
             <a>Top Companies</a>
         </div>
@@ -48,20 +48,18 @@
                 </div>
                 <div class="question">
                     <span class="question-name">How old are you?</span>
-                    <select id="age">
-                        <option value="" disabled selected>Choose</option>
-                        <option value="21">21 - 40</option>
-                        <option value="50">40 - 60</option>
-                        <option value="70">60 - 80+</option>
-                    </select>
+                    <div class="buttons">
+                        <span id="age_1" class="response default">21 - 40</span>
+                        <span id="age_2" class="response">40 - 60</span>
+                        <span id="age_3" class="response">60 - 80+</span>
+                    </div>
                 </div>
                 <div class="question">
                     <span class="question-name">Do you currently have Medicare insurance?</span>
-                    <select id="insured">
-                        <option value="" disabled selected>Choose</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
+                    <div class="buttons">
+                        <span id="insured_yes" class="response default">Yes</span>
+                        <span id="insured_no" class="response">No</span>
+                    </div>
                 </div>
             </form>
             <span class="helper">No contact information or SSN needed</span>
@@ -81,7 +79,7 @@
             </div>
         </header>
         <section class="list">
-            <iframe id="results" src="https://agarria.github.io/insurance/medicare.results"></iframe>
+            <iframe id="results" scrolling="no" src="https://www.medicare.ins-compare.com/medicare.results.html" sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-top-navigation allow-popups"></iframe>
         </section>
         <footer>
             <span class="logo">
@@ -90,15 +88,16 @@
             </span>
             <div class="links">
                 <a href="#header">get started</a>
-                <a>privacy policy</a>
-                <a>terms & conditions</a>
+                <a href="https://ins-compare.com/privacy.html">privacy policy</a>
+                <a href="https://ins-compare.com/terms.html">terms & conditions</a>
             </div>
             <span class="copy">2021 © Ins-Compare.com All Rights Reserved</span>
         </footer>
     </main>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-<script type="text/javascript" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 <script type="text/javascript" src="https://cdn.myadoptimizer.com/maojsfiles/landingpagesjs/1f01aa7e-a185-41dd-80ad-8f7805db5676.js"></script>
 <script type="text/javascript">
     function is_int(value) {
@@ -174,20 +173,26 @@
 
         });
 
-        $('#age').change(function(){
+        $('#age_1,#age_2,#age_3').click(function($event){
             $(".question:nth-child(2)").css('display','none');
             $(".question:nth-child(3)").css('display','block');
             $("#bar").css('width','calc((100% / 3) * 3)');
+
         });
 
-        $('#insured').change(function(){
+        $('#insured_yes,#insured_no').click(function($event){
                 $(".overlay").css('display','none');
+                $("html").css('overflow-y','auto');
 
                 properties.zipcode = $("#zip").val();
                 properties.state = $("#short").val();
-                properties.insured = $("#insured").val();
 
-                console.log("properties: " + JSON.stringify(properties));
+                if ($event.currentTarget.id == 'insured_yes'){
+                    properties.insured = "Yes";
+                }
+                if ($event.currentTarget.id == 'insured_no'){
+                    properties.insured = "No";
+                }
 
                 frame.src = frame.src + "?ZipCode="+properties.zipcode+"&State="+properties.state+"&CurrentlyEnrolled="+properties.insured;
         });
